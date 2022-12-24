@@ -1,0 +1,19 @@
+.ant-upload-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+  height: 350px;
+}
+.ant-upload-list-item-image,.ant-upload-list-picture-card-container{
+  width: 200px;
+  border-radius: 30px;
+
+}
+
+.ant-upload-list-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin:10px
+}
