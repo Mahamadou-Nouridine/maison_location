@@ -10,6 +10,7 @@ import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-do
 import Maisons from './components/maison/Maisons';
 import { useEffect } from 'react';
 import M from 'materialize-css'
+import mainUrl from './mainUrl';
 
 
 
@@ -31,13 +32,13 @@ function App() {
 
   useEffect(()=>{
     if(JSON.parse(localStorage.getItem('maison'))) setSelectedMaison(JSON.parse(localStorage.getItem('maison')))
-    
+
     // localStorage.setItem('maison', JSON.stringify(selectedMaison))
   },[])
 
   const getAllMaison = () => {
     try {
-      axios.get('http://localhost:3700/maison')
+      axios.get(mainUrl + '/maison')
         .then(response => {
           setMaisons(Object(response.data).maisons)
           console.log(Object(response.data).maisons);
@@ -67,7 +68,7 @@ function App() {
       alert("les mots ed pass ne correspondent pas")
     } else {
       try {
-        const respo = await axios.post('http://localhost:3700/user/new',
+        const respo = await axios.post(mainUrl  + '/user/new',
           {
             password: upPass,
             email: upMail,
@@ -99,7 +100,7 @@ function App() {
       alert('Renseigner toutes les informations')
     } else {
       try {
-        const response = await axios.post('http://localhost:3700/auth',
+        const response = await axios.post(mainUrl + '/auth',
           {
             password: inPass,
             email: inMail
@@ -130,7 +131,7 @@ function App() {
 
   const refresh = async () => {
     try {
-      const response = await axios.get('http://localhost:3700/auth/refresh',
+      const response = await axios.get(mainUrl + '/auth/refresh',
         {
           withCredentials: true
         })
@@ -150,7 +151,7 @@ function App() {
   const stopLocation = async () => {
     if (window.confirm('Êtes vous sûr de vouloir arrêter la location')) {
       try {
-        const response = await axios.post('http://localhost:3700/maison/stop',
+        const response = await axios.post(mainUrl + '/maison/stop',
           {
             userId: user.user._id
           },
@@ -181,7 +182,7 @@ function App() {
 
   const logOut = async()=>{
     try {
-      const response = await axios.get('http://localhost:3700/auth/logout',
+      const response = await axios.get(mainUrl + '/auth/logout',
       {
         withCredentials: true
       }

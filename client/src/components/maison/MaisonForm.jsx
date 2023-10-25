@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Upload, Button, Alert } from 'antd'
 import axios from 'axios';
+import mainUrl from '../../mainUrl';
 
 
 const MaisonForm = ({id, refresh}) => {
@@ -37,7 +38,7 @@ const MaisonForm = ({id, refresh}) => {
             formData.set('proprioId', id)
 
             try {
-                const sent = await axios.post('http://localhost:3700/maison/create',
+                const sent = await axios.post(mainUrl + '/maison/create',
                     formData,
                     {
                         headers: {

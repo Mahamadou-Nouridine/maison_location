@@ -2,12 +2,13 @@
 import axios from 'axios';
 import React from 'react';
 import { Link } from 'react-router-dom'
+import mainUrl from '../../mainUrl';
 
 const Maison = ({ position, maison, setSelectedMaison, id, refresh }) => {
 
     const validate = async () => {
         try {
-            const response = await axios.post('http://localhost:3700/maison/validate',
+            const response = await axios.post(mainUrl + '/maison/validate',
                 {
                     maisonId: maison._id,
                     proprioId: id
@@ -32,7 +33,7 @@ const Maison = ({ position, maison, setSelectedMaison, id, refresh }) => {
         if (maison.locateurId) return alert('maison deja en location')
         if (window.confirm('Are you sure you want to delete')) {
             try {
-                const response = await axios.post('http://localhost:3700/maison/delete',
+                const response = await axios.post(mainUrl + '/maison/delete',
                     {
                         maisonId: maison._id,
                         proprioId: id
@@ -59,7 +60,7 @@ const Maison = ({ position, maison, setSelectedMaison, id, refresh }) => {
             <div className="card col" style={{ maxWidth: '32%', minWidth: 350, margin: 10, maxHeight: 5000 }}>
                 <div  className="card-image">
                     <span style={{ width: '100%' }} class="new badge blue" data-badge-caption={`${maison.enAttente ? 'En attente' : maison.enLocation ? 'En location' : 'Pas en Location'}`}></span>
-                    <img   src={`http://localhost:3700/uploads/${maison.images[0].path}`} />
+                    <img   src={mainUrl + `/uploads/${maison.images[0].path}`} />
                     <span className="card-title teal-text">{maison.quartier}</span>
 
 

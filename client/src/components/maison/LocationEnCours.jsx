@@ -1,4 +1,5 @@
 import React from 'react';
+import mainUrl from '../../mainUrl';
 
 const LocationEnCours = ({ maison, stopLocation }) => {
     return (
@@ -10,7 +11,7 @@ const LocationEnCours = ({ maison, stopLocation }) => {
                     {
                         maison.images.map((image, index) => (
                             <div className="col s12 m3" style={{ maxWidth: '100%' }}>
-                                <img src={`http://localhost:3700/uploads/${image.path}`} alt="" style={{ width: '100%' }} />
+                                <img src={`${mainUrl}/uploads/${image.path}`} alt="" style={{ width: '100%' }} />
                             </div>
                         ))
                     }
@@ -72,7 +73,7 @@ const LocationEnCours = ({ maison, stopLocation }) => {
                                     <div className="row collection-item valign-wrapper" style={{ maxWeight: 40 }}>
                                         <h6>{maison.contact}</h6>
                                     </div>
-                                
+
                                 </div>
                             </div>
                         </div>
