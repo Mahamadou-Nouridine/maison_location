@@ -13,7 +13,7 @@ const maisonRoutes = require('./routes/maison')
 const authRoutes = require('./routes/auth')
 app.use(cors(
     {
-        origin: ['http://localhost:3000', 'http://localhost:3001'],
+        origin: true,
         credentials: true
     }
 ))
